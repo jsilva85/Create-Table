@@ -1,22 +1,30 @@
-create table Buyer (
-        buyerId binary (16),
-        buyerEmail varchar(128),
-        buyerFirstName varchar(128),
-        buyerLastName varchar(128),
+create table buyer (
+        buyerId BINARY (16) not null,
+        buyerEmail VARCHAR(128) not null,
+        buyerFirstName VARCHAR(128) not null,
+        buyerLastName VARCHAR(128) not null,
         index (buyerEmail),
+        unique (buyerEmail),
+        unique (buyerFirstName),
+        unique (buyerLastName),
         primary key (buyerId)
 );
 
-create table Ticket (
-        ticketId binary (16),
-        ticketType varchar(128),
-        ticketQuantity binary (16)
-        foreign key (buyerId) reference (buyerId)
+create table ticket (
+        ticketId BINARY (16) not null,
+        ticketType VARCHAR(128) not null,
+        ticketQuantity VARCHAR (16) not null,
+        primary key (ticketId)
 
 );
-create  table Registration (
-        registrationId varchar(128),
-        registrationEmail varchar(128),
-        registrationFullName varchar(128),
-        foreign key (buyerId)references (buyerId)
+
+create table registration (
+        registrationId binary(16) not null,
+        registrationEmail VARCHAR(128) not null,
+        registrationFullName VARCHAR(128) not null,
+        unique (registrationEmail),
+        unique (registrationFullName),
+        foreign key (registrationEmail) REFERENCES buyer (buyerId),
+        primary key (registrationId)
+
 );
