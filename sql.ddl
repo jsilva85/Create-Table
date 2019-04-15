@@ -24,7 +24,6 @@ create table registration (
         registrationFullName VARCHAR(128) not null,
         unique (registrationEmail),
         unique (registrationFullName),
-        foreign key (registrationEmail) REFERENCES buyer (buyerId),
         primary key (registrationId)
 
-);
+) ;
